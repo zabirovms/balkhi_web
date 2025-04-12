@@ -3,448 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балхӣ Digital - Мавлоно Ҷалолуддин Балхӣ (Румӣ)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Балхӣ - Ашъору осори адабӣ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body, .tajik-text {
-            direction: ltr !important;
-            font-family: "Noto Sans", "Arial", "Helvetica", sans-serif;
-            unicode-bidi: bidi-override;
-            transition: all 0.3s ease;
-        }
-        
-        .verse {
-            font-family: "Noto Sans", serif;
-            font-size: 1.5rem;
-            line-height: 2.5;
-        }
-        
-        .dark-mode {
-            background-color: #1a202c;
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .bg-white {
-            background-color: #2d3748 !important;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #9c7c5e;
-        }
-        
-        .search-highlight {
-            background-color: rgba(252, 211, 77, 0.5);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-        
-        /* Force LTR for all elements */
-        * {
-            direction: ltr !important;
-            unicode-bidi: bidi-override;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-gray-100">
-    <!-- Header -->
-    <header class="bg-amber-800 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-book-open text-3xl text-amber-800"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-3xl font-bold">Балхӣ Digital</h1>
-                        <p class="text-amber-200">Мавлоно Ҷалолуддин Балхӣ (Румӣ)</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <button id="themeToggle" class="p-2 rounded-full bg-amber-900 hover:bg-amber-700 transition">
-                        <i class="fas fa-moon text-white"></i>
-                    </button>
-                    <nav class="hidden md:block">
-                        <ul class="flex space-x-6">
-                            <li><a href="#home" class="hover:text-amber-200 transition">Асосӣ</a></li>
-                            <li><a href="#poems" class="hover:text-amber-200 transition">Ашъор</a></li>
-                            <li><a href="#biography" class="hover:text-amber-200 transition">Зиндагинома</a></li>
-                            <li><a href="#commentary" class="hover:text-amber-200 transition">Тафсир</a></li>
-                            <li><a href="#search" class="hover:text-amber-200 transition">Ҷустуҷӯ</a></li>
-                        </ul>
-                    </nav>
-                    <button class="md:hidden p-2" id="mobileMenuButton">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-amber-900 py-4">
-            <div class="container mx-auto px-4">
-                <ul class="flex flex-col space-y-3">
-                    <li><a href="#home" class="block hover:text-amber-200 transition">Асосӣ</a></li>
-                    <li><a href="#poems" class="block hover:text-amber-200 transition">Ашъор</a></li>
-                    <li><a href="#biography" class="block hover:text-amber-200 transition">Зиндагинома</a></li>
-                    <li><a href="#commentary" class="block hover:text-amber-200 transition">Тафсир</a></li>
-                    <li><a href="#search" class="block hover:text-amber-200 transition">Ҷустуҷӯ</a></li>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Балхӣ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Асосӣ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#works">Осор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Дар бораи Балхӣ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Тамос</a>
+                    </li>
                 </ul>
+                <div class="d-flex">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Ҷустуҷӯ...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="py-16 bg-gradient-to-r from-amber-600 to-amber-800 text-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Мавлоно Ҷалолуддин Балхӣ</h2>
-                    <p class="text-xl mb-8 tajik-text">"Ҳар кас аз завқи хеш машҳур аст, ман аз ғам машҳур ҳастам"</p>
-                    <div class="flex space-x-4">
-                        <a href="#poems" class="bg-white text-amber-800 px-6 py-3 rounded-lg font-bold hover:bg-amber-100 transition">Оғози хондан</a>
-                        <a href="#biography" class="border-2 border-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-amber-800 transition">Зиндагинома</a>
+    <section class="hero-section text-center" id="home">
+        <div class="container">
+            <img src="assets/images/author.jpg" alt="Балхӣ" class="author-img mb-3">
+            <h1>Балхӣ</h1>
+            <p class="lead">Шоири бузурги форс-тоҷик</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search and Filter -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="mainSearch" placeholder="Ҷустуҷӯи ашъор...">
+                    <button class="search-btn" id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select" id="filterSelect">
+                    <option value="all">Ҳамаи ашъор</option>
+                    <option value="ghazal">Ғазалҳо</option>
+                    <option value="rubai">Рубоиҳо</option>
+                    <option value="qasida">Қасидаҳо</option>
+                    <option value="other">Дигар</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="poemTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="top-tab" data-bs-toggle="tab" data-bs-target="#top" type="button">Беҳтаринҳо</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="new-tab" data-bs-toggle="tab" data-bs-target="#new" type="button">Навтаринҳо</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="recommended-tab" data-bs-toggle="tab" data-bs-target="#recommended" type="button">Тавсияшуда</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button">Ҳамаи ашъор</button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="poemTabsContent">
+            <!-- Top Poems -->
+            <div class="tab-pane fade show active" id="top" role="tabpanel">
+                <div class="row" id="topPoemsContainer"></div>
+            </div>
+            
+            <!-- New Poems -->
+            <div class="tab-pane fade" id="new" role="tabpanel">
+                <div class="row" id="newPoemsContainer"></div>
+            </div>
+            
+            <!-- Recommended Poems -->
+            <div class="tab-pane fade" id="recommended" role="tabpanel">
+                <div class="row" id="recommendedPoemsContainer"></div>
+            </div>
+            
+            <!-- All Poems -->
+            <div class="tab-pane fade" id="all" role="tabpanel">
+                <div class="row" id="allPoemsContainer"></div>
+            </div>
+        </div>
+
+        <!-- Works Section -->
+        <section id="works" class="my-5 py-4">
+            <h2 class="text-center mb-4">Осори Балхӣ</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card poem-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title poem-title">Дивони ашъор</h5>
+                            <p class="card-text">Ҳамаи ғазалу қасидаву рубоиҳои Балхӣ</p>
+                            <a href="#" class="btn btn-primary">Матнҳо</a>
+                        </div>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="bg-white bg-opacity-20 p-8 rounded-lg backdrop-blur-sm">
-                        <div id="verseRotator" class="verse text-2xl text-center tajik-text">
-                            <div class="fade-in">
-                                <p>"Биё, биё, ҳар чӣ ҳастӣ, биё,</p>
-                                <p>Гоҳ кофирӣ, гоҳ мусулмонӣ, биё."</p>
-                                <p class="text-sm mt-4">— Маснавӣ</p>
+                <div class="col-md-4 mb-4">
+                    <div class="card poem-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title poem-title">Маснавиҳо</h5>
+                            <p class="card-text">Маснавиҳои манзуми Балхӣ</p>
+                            <a href="#" class="btn btn-primary">Матнҳо</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card poem-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title poem-title">Рисолаҳо</h5>
+                            <p class="card-text">Рисолаҳои насрии Балхӣ</p>
+                            <a href="#" class="btn btn-primary">Матнҳо</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="my-5 py-4">
+            <h2 class="text-center mb-4">Дар бораи Балхӣ</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Зиндагинома</h4>
+                    <p id="biographyText"></p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Давраи зиндагӣ</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1207</div>
+                            <div class="timeline-content">
+                                <h5>Таваллуд</h5>
+                                <p>Дар шаҳри Балх ба дунё омадааст.</p>
                             </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1220</div>
+                            <div class="timeline-content">
+                                <h5>Ҳиҷрат</h5>
+                                <p>Баъди ҳуҷуми муғулҳо ба хонаводааш ба Қуния кӯчиданд.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1273</div>
+                            <div class="timeline-content">
+                                <h5>Вафот</h5>
+                                <p>Дар Қуния вафот кардааст.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Poem Modal -->
+    <div class="modal fade" id="poemModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="poemModalTitle">Сарлавҳаи шеър</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="poemModalContent"></div>
+                    <hr>
+                    <div class="poem-actions">
+                        <button class="like-btn" id="likePoemBtn"><i class="far fa-heart"></i> <span id="likeCount">0</span></button>
+                        <button class="share-btn" id="sharePoemBtn"><i class="fas fa-share-alt"></i> Бахшдан</button>
+                    </div>
+                    <div class="comments-section mt-4">
+                        <h6>Шарҳҳо</h6>
+                        <div id="poemComments"></div>
+                        <div class="add-comment mt-3">
+                            <textarea class="form-control" id="commentText" placeholder="Шарҳи худро нависед..."></textarea>
+                            <button class="btn btn-primary mt-2" id="submitComment">Ирсол</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Daily Verse -->
-    <section class="bg-amber-100 py-8 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col md:flex-row items-center justify-between">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold text-amber-800 dark:text-amber-300 mb-2">Назмҳои рӯз</h3>
-                    <p class="verse tajik-text">"Дар дили ҳар зере осмон аст, дар пои ҳар хоке дарё аст."</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">— Дивони Шамси Табрезӣ</p>
-                </div>
-                <div class="flex space-x-3">
-                    <button class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition">
-                        <i class="fab fa-telegram mr-2"></i> Нашр
-                    </button>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                        <i class="fab fa-twitter mr-2"></i> Twitter
-                    </button>
-                    <button class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition">
-                        <i class="fas fa-bookmark mr-2"></i> Нигоҳдорӣ
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Poems Section -->
-    <section id="poems" class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Ашъори Мавлоно</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Masnavi Card -->
-                <div class="bg-amber-50 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-amber-200 flex items-center justify-center">
-                        <i class="fas fa-scroll text-6xl text-amber-700 dark:text-amber-500"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 dark:text-white">Маснавӣ</h3>
-                        <p class="text-gray-600 dark:text-gray-300 tajik-text mb-4">Маснавии маънавӣ - ашҳартарин асари адабии Мавлоно</p>
-                        <a href="#" class="text-amber-600 dark:text-amber-400 font-bold hover:underline">Хондани ашъор</a>
-                    </div>
-                </div>
-                
-                <!-- Divan-e Shams Card -->
-                <div class="bg-amber-50 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-amber-300 flex items-center justify-center">
-                        <i class="fas fa-sun text-6xl text-amber-700 dark:text-amber-500"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 dark:text-white">Дивони Шамс</h3>
-                        <p class="text-gray-600 dark:text-gray-300 tajik-text mb-4">Ғазалҳо ва рубоиҳо ба номи устоди Мавлоно</p>
-                        <a href="#" class="text-amber-600 dark:text-amber-400 font-bold hover:underline">Хондани ашъор</a>
-                    </div>
-                </div>
-                
-                <!-- Rubaiyat Card -->
-                <div class="bg-amber-50 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-amber-400 flex items-center justify-center">
-                        <i class="fas fa-star text-6xl text-amber-700 dark:text-amber-500"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 dark:text-white">Рубоиёт</h3>
-                        <p class="text-gray-600 dark:text-gray-300 tajik-text mb-4">Рубоиҳои пурмаънои Мавлоно дар бораи ишқ ва маърифат</p>
-                        <a href="#" class="text-amber-600 dark:text-amber-400 font-bold hover:underline">Хондани ашъор</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-amber-700 transition">
-                    Дидани ҳамаи ашъор <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Biography Section -->
-    <section id="biography" class="py-16 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Зиндагинома</h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <!-- Timeline -->
-                <div class="relative">
-                    <!-- Timeline line -->
-                    <div class="absolute left-1/2 h-full w-1 bg-amber-500 transform -translate-x-1/2"></div>
-                    
-                    <!-- Timeline items -->
-                    <div class="mb-8">
-                        <div class="flex flex-col md:flex-row items-center">
-                            <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0">
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                                    <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400">1207 - Таваллуд</h3>
-                                    <p class="tajik-text mt-2 dark:text-gray-300">Дар шаҳри Балх (ҳоло Афғонистон) дар оилаи олим ва файласуф таваллуд шудааст.</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2"></div>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Тамос бо мо</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Номи шумо" required>
                         </div>
-                    </div>
-                    
-                    <div class="mb-8">
-                        <div class="flex flex-col md:flex-row items-center">
-                            <div class="md:w-1/2"></div>
-                            <div class="md:w-1/2 md:pl-8">
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                                    <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400">1219 - Ҳиҷрат</h3>
-                                    <p class="tajik-text mt-2 dark:text-gray-300">Ҳангоми ҳуҷуми муғулҳо ба оилааш ба Қуня (Туркия) ҳиҷрат мекунанд.</p>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Почтаи электронӣ" required>
                         </div>
-                    </div>
-                    
-                    <div class="mb-8">
-                        <div class="flex flex-col md:flex-row items-center">
-                            <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0">
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                                    <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400">1244 - Воситаи Шамс</h3>
-                                    <p class="tajik-text mt-2 dark:text-gray-300">Бо Шамси Табрезӣ вохӯрда, таҳти таъсири ӯ қаламдории шеърро оғоз мекунад.</p>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2"></div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Паёми шумо" required></textarea>
                         </div>
-                    </div>
-                    
-                    <div class="mb-8">
-                        <div class="flex flex-col md:flex-row items-center">
-                            <div class="md:w-1/2"></div>
-                            <div class="md:w-1/2 md:pl-8">
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                                    <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400">1273 - Вафот</h3>
-                                    <p class="tajik-text mt-2 dark:text-gray-300">Дар Қуня вафот карда, мақбараи ӯ ҳоло ҷозибаи зиёрат гардидааст.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#" class="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-amber-700 transition">
-                        Маълумоти бештар <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Commentary Section -->
-    <section id="commentary" class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Тафсир ва Шарҳҳо</h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-amber-50 dark:bg-gray-700 rounded-lg shadow-md p-8 mb-8">
-                    <h3 class="text-2xl font-bold mb-6 text-amber-800 dark:text-amber-400">Тафсири олимон</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white dark:bg-gray-600 p-4 rounded-lg shadow-sm">
-                            <h4 class="font-bold mb-2 dark:text-white">"Биё, биё, ҳар чӣ ҳастӣ, биё"</h4>
-                            <p class="tajik-text text-sm dark:text-gray-300">Ин шеър даъвати умумии Мавлоно ба ҳамаи башар аст, ки ғайр аз қабилият ва мазҳаб ба суҳбати ӯ биоянд.</p>
-                            <p class="text-xs text-gray-500 mt-2">— Доктор Аҳмади Ҷавҳарӣ</p>
-                        </div>
-                        <div class="bg-white dark:bg-gray-600 p-4 rounded-lg shadow-sm">
-                            <h4 class="font-bold mb-2 dark:text-white">"Ман аз ғам машҳур ҳастам"</h4>
-                            <p class="tajik-text text-sm dark:text-gray-300">Ғами Мавлоно на ғами оддӣ, балки ғами ҷудоӣ аз Худо ва ишқи ҳақиқӣ мебошад.</p>
-                            <p class="text-xs text-gray-500 mt-2">— Проф. Муҳаммадризо Шафӣ</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-amber-800 dark:text-amber-400">Шарҳи ашъор</h3>
-                    <div class="mb-6">
-                        <div class="verse tajik-text bg-amber-50 dark:bg-gray-600 p-4 rounded-lg mb-3">
-                            "Дар дили ҳар зере осмон аст, дар пои ҳар хоке дарё аст."
-                        </div>
-                        <p class="tajik-text dark:text-gray-300">Ин байти маъноӣ нигоҳи Мавлоноро ба ҷаҳон ва инсон нигоҳ медорад, ки ҳар чизе зери пӯшаи зоҳирӣ ҷаҳони дигар дорад.</p>
-                    </div>
-                    
-                    <div class="flex justify-end">
-                        <a href="#" class="text-amber-600 dark:text-amber-400 font-bold hover:underline">
-                            Дидани ҳамаи тафсирҳо <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section id="search" class="py-16 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Ҷустуҷӯи ашъор</h2>
-            
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 mb-8">
-                    <div class="relative">
-                        <input type="text" id="searchInput" placeholder="Калима ё ибораро нависед..." 
-                               class="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg pr-12 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
-                        <button id="searchButton" class="absolute right-4 top-4 text-gray-500 dark:text-gray-400">
-                            <i class="fas fa-search text-xl"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="text-sm text-gray-600 dark:text-gray-400">Ҷустуҷӯ бо: </span>
-                        <button class="text-sm bg-amber-100 dark:bg-gray-700 px-3 py-1 rounded-full hover:bg-amber-200 dark:hover:bg-gray-600 transition">ишқ</button>
-                        <button class="text-sm bg-amber-100 dark:bg-gray-700 px-3 py-1 rounded-full hover:bg-amber-200 dark:hover:bg-gray-600 transition">маърифат</button>
-                        <button class="text-sm bg-amber-100 dark:bg-gray-700 px-3 py-1 rounded-full hover:bg-amber-200 dark:hover:bg-gray-600 transition">Худо</button>
-                        <button class="text-sm bg-amber-100 dark:bg-gray-700 px-3 py-1 rounded-full hover:bg-amber-200 dark:hover:bg-gray-600 transition">дил</button>
-                    </div>
-                </div>
-                
-                <!-- Search Results -->
-                <div id="searchResults" class="hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl font-bold dark:text-white">Натиҷаҳои ҷустуҷӯ</h3>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Намоиш 1-5 аз 24 натиҷа</div>
-                    </div>
-                    
-                    <div class="space-y-6">
-                        <!-- Result 1 -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition">
-                            <div class="verse tajik-text mb-4">
-                                "Биё, биё, ҳар чӣ ҳастӣ, биё,<br>
-                                Гоҳ кофирӣ, гоҳ мусулмонӣ, биё."
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-amber-700 dark:text-amber-400">Маснавӣ, китоби 1</span>
-                                <div class="flex space-x-3">
-                                    <button class="text-gray-500 hover:text-amber-600 dark:hover:text-amber-400">
-                                        <i class="far fa-bookmark"></i>
-                                    </button>
-                                    <button class="text-gray-500 hover:text-amber-600 dark:hover:text-amber-400">
-                                        <i class="fas fa-share-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Result 2 -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition">
-                            <div class="verse tajik-text mb-4">
-                                "Дар дили ҳар зере осмон аст,<br>
-                                Дар пои ҳар хоке дарё аст."
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-amber-700 dark:text-amber-400">Дивони Шамс, ғазали 112</span>
-                                <div class="flex space-x-3">
-                                    <button class="text-gray-500 hover:text-amber-600 dark:hover:text-amber-400">
-                                        <i class="far fa-bookmark"></i>
-                                    </button>
-                                    <button class="text-gray-500 hover:text-amber-600 dark:hover:text-amber-400">
-                                        <i class="fas fa-share-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 flex justify-center">
-                        <nav class="flex items-center space-x-2">
-                            <button class="px-4 py-2 border rounded-lg text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-600 hover:bg-amber-50 dark:hover:bg-gray-700">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="px-4 py-2 bg-amber-600 text-white rounded-lg">1</button>
-                            <button class="px-4 py-2 border rounded-lg hover:bg-amber-50 dark:hover:bg-gray-700">2</button>
-                            <button class="px-4 py-2 border rounded-lg hover:bg-amber-50 dark:hover:bg-gray-700">3</button>
-                            <button class="px-4 py-2 border rounded-lg text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-600 hover:bg-amber-50 dark:hover:bg-gray-700">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </nav>
-                    </div>
-                </div>
-                
-                <!-- Advanced Search -->
-                <div class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-6 dark:text-white">Ҷустуҷӯи пешрафта</h3>
-                    
-                    <form>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Китоб</label>
-                                <select class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white">
-                                    <option>Ҳамаи китобҳо</option>
-                                    <option>Маснавӣ</option>
-                                    <option>Дивони Шамс</option>
-                                    <option>Рубоиёт</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Навъ</label>
-                                <select class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white">
-                                    <option>Ҳамаи навъҳо</option>
-                                    <option>Ғазал</option>
-                                    <option>Рубойӣ</option>
-                                    <option>Байт</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-6">
-                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Калимаҳои калидӣ</label>
-                            <input type="text" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white" placeholder="Калимаҳоро бо вергул (, ҷудо кунед)">
-                        </div>
-                        
-                        <div class="mt-6">
-                            <button type="submit" class="bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition">
-                                Ҷустуҷӯи пешрафта
-                            </button>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Фиристодан</button>
                     </form>
                 </div>
             </div>
@@ -452,152 +234,42 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-amber-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Балхӣ Digital</h3>
-                    <p class="tajik-text">Портали комил оид ба осори Мавлоно Ҷалолуддин Балхӣ ба забони тоҷикӣ</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Балхӣ</h5>
+                    <p>Сомонаи расмии осори адабии Балхӣ</p>
                 </div>
-                <div>
-                    <h4 class="font-bold mb-4">Мундариҷа</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-amber-200 transition">Ашъор</a></li>
-                        <li><a href="#" class="hover:text-amber-200 transition">Зиндагинома</a></li>
-                        <li><a href="#" class="hover:text-amber-200 transition">Тафсирҳо</a></li>
-                        <li><a href="#" class="hover:text-amber-200 transition">Китобшиносӣ</a></li>
+                <div class="col-md-4">
+                    <h5>Пайвандҳо</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Асосӣ</a></li>
+                        <li><a href="#" class="text-white">Осор</a></li>
+                        <li><a href="#" class="text-white">Дар бораи Балхӣ</a></li>
+                        <li><a href="#" class="text-white">Тамос</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-bold mb-4">Пайвандҳо</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-amber-200 transition">Дар бораи мо</a></li>
-                        <li><a href="#" class="hover:text-amber-200 transition">Алоқа</a></li>
-                        <li><a href="#" class="hover:text-amber-200 transition">Роҳнамои истифода</a></li>
-                        <li><a href="#" class="hover:text-amber-200 transition">API барои таҳқиқот</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Обуна шавед</h4>
-                    <p class="tajik-text mb-4">Ба мо пайваст шавед то ахбори навро қабул кунед</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Суроғаи электронӣ" class="px-4 py-2 rounded-l-lg w-full text-gray-800">
-                        <button class="bg-amber-600 px-4 py-2 rounded-r-lg hover:bg-amber-700 transition">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-2xl hover:text-amber-200 transition"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="text-2xl hover:text-amber-200 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-2xl hover:text-amber-200 transition"><i class="fab fa-youtube"></i></a>
+                <div class="col-md-4">
+                    <h5>Ҷамъиятӣ</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-amber-800 mt-8 pt-8 text-center">
-                <p class="tajik-text">Ҳамаи ҳуқуқҳо маҳфуз аст © 2023 Балхӣ Digital</p>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-0">&copy; 2023 Сомонаи Балхӣ. Ҳамаи ҳуқуқҳо ҳифз шудаанд.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        
-        // Check for saved user preference, if any, on load of the website
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-                themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
-            } else {
-                localStorage.setItem('darkMode', 'disabled');
-                themeToggle.innerHTML = '<i class="fas fa-moon text-white"></i>';
-            }
-        });
-        
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Verse Rotator
-        const verses = [
-            {
-                text: '"Биё, биё, ҳар чӣ ҳастӣ, биё,<br>Гоҳ кофирӣ, гоҳ мусулмонӣ, биё."',
-                source: '— Маснавӣ'
-            },
-            {
-                text: '"Дар дили ҳар зере осмон аст,<br>Дар пои ҳар хоке дарё аст."',
-                source: '— Дивони Шамс'
-            },
-            {
-                text: '"Ҳар кас аз завқи хеш машҳур аст,<br>Ман аз ғам машҳур ҳастам."',
-                source: '— Дивони Шамс'
-            },
-            {
-                text: '"Ишқ омехта бо ҳама чиз аст,<br>Аммо ҳеҷ чиз ба монанди ӯ нест."',
-                source: '— Маснавӣ'
-            }
-        ];
-        
-        let currentVerse = 0;
-        const verseContainer = document.getElementById('verseRotator');
-        
-        function rotateVerse() {
-            currentVerse = (currentVerse + 1) % verses.length;
-            verseContainer.innerHTML = `
-                <div class="fade-in">
-                    <p>${verses[currentVerse].text}</p>
-                    <p class="text-sm mt-4">${verses[currentVerse].source}</p>
-                </div>
-            `;
-        }
-        
-        setInterval(rotateVerse, 5000);
-        
-        // Search Functionality
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const searchResults = document.getElementById('searchResults');
-        
-        searchButton.addEventListener('click', () => {
-            if (searchInput.value.trim() !== '') {
-                searchResults.classList.remove('hidden');
-                // In a real implementation, you would fetch search results here
-            }
-        });
-        
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
-                searchResults.classList.remove('hidden');
-                // In a real implementation, you would fetch search results here
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=zabirovms/balkhi-web" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
 </html>

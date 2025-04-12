@@ -1,12 +1,16 @@
----
-title: balkhi-web
-emoji: 🐳
-colorFrom: yellow
-colorTo: red
-sdk: static
-pinned: false
-tags:
-  - deepsite
----
+# Balkhi Website (Tajik Language)
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+A fully functional website dedicated to the works of Balkhi in Tajik language.
+
+## Features
+- Poem browsing and searching
+- Categorized works
+- Biography section
+- Responsive design
+
+## Setup
+1. Clone this repository
+2. Open `index.html` in any browser
+
+## Data Structure
+Poems data is stored in [assets/data/poems.json] (or directly in index.html)
