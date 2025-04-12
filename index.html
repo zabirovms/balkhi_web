@@ -1,207 +1,270 @@
 <!DOCTYPE html>
-<html lang="tg">
+<html lang="tg" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балхӣ - Ашъору осори адабӣ</title>
+    <meta name="description" content="Сомонаи расмии осори адабии Балхӣ">
+    <title>Балхӣ - Осори адабӣ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Балхӣ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Асосӣ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#works">Осор</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Дар бораи Балхӣ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Тамос</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <div class="search-box">
-                        <input type="text" class="search-input" placeholder="Ҷустуҷӯ...">
-                        <button class="search-btn"><i class="fas fa-search"></i></button>
-                    </div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Бор шуда истодааст...</span>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div id="audioPlayer" class="audio-player">
+        <audio id="poemAudio" src=""></audio>
+        <div class="player-controls">
+            <button id="playBtn" class="player-btn"><i class="fas fa-play"></i></button>
+            <div class="player-info">
+                <div id="nowPlaying">Овозхонӣ</div>
+                <div class="progress-container">
+                    <progress id="audioProgress" value="0" max="100"></progress>
                 </div>
             </div>
+            <button id="closePlayer" class="player-btn"><i class="fas fa-times"></i></button>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section text-center" id="home">
-        <div class="container">
-            <img src="assets/images/author.jpg" alt="Балхӣ" class="author-img mb-3">
-            <h1>Балхӣ</h1>
-            <p class="lead">Шоири бузурги форс-тоҷик</p>
-        </div>
-    </section>
+    <!-- Main Layout -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="app-sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/author.jpg" alt="Балхӣ" class="author-img">
+                <h1>Балхӣ</h1>
+                <p class="author-subtitle">Шоири бузурги форс-тоҷик</p>
+            </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Search and Filter -->
-        <div class="row mb-4">
-            <div class="col-md-6">
+            <div class="sidebar-search">
                 <div class="search-box">
-                    <input type="text" class="search-input" id="mainSearch" placeholder="Ҷустуҷӯи ашъор...">
-                    <button class="search-btn" id="searchButton"><i class="fas fa-search"></i></button>
+                    <input type="text" id="sidebarSearch" placeholder="Ҷустуҷӯи ашъор..." aria-label="Ҷустуҷӯи ашъор">
+                    <button id="sidebarSearchBtn"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-            <div class="col-md-6">
-                <select class="form-select" id="filterSelect">
-                    <option value="all">Ҳамаи ашъор</option>
-                    <option value="ghazal">Ғазалҳо</option>
-                    <option value="rubai">Рубоиҳо</option>
-                    <option value="qasida">Қасидаҳо</option>
-                    <option value="other">Дигар</option>
-                </select>
-            </div>
-        </div>
 
-        <!-- Tabs -->
-        <ul class="nav nav-tabs" id="poemTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="top-tab" data-bs-toggle="tab" data-bs-target="#top" type="button">Беҳтаринҳо</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="new-tab" data-bs-toggle="tab" data-bs-target="#new" type="button">Навтаринҳо</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="recommended-tab" data-bs-toggle="tab" data-bs-target="#recommended" type="button">Тавсияшуда</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button">Ҳамаи ашъор</button>
-            </li>
-        </ul>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#home"><i class="fas fa-home"></i> Асосӣ</a></li>
+                    <li><a href="#ghazals"><i class="fas fa-book-open"></i> Ғазалҳо</a></li>
+                    <li><a href="#rubaiyat"><i class="fas fa-feather"></i> Рубоиҳо</a></li>
+                    <li><a href="#qasidas"><i class="fas fa-scroll"></i> Қасидаҳо</a></li>
+                    <li><a href="#biography"><i class="fas fa-user"></i> Зиндагинома</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Тамос</a></li>
+                </ul>
+            </nav>
 
-        <!-- Tab Content -->
-        <div class="tab-content" id="poemTabsContent">
-            <!-- Top Poems -->
-            <div class="tab-pane fade show active" id="top" role="tabpanel">
-                <div class="row" id="topPoemsContainer"></div>
+            <div class="sidebar-footer">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p class="copyright">&copy; 2023 Балхӣ</p>
             </div>
-            
-            <!-- New Poems -->
-            <div class="tab-pane fade" id="new" role="tabpanel">
-                <div class="row" id="newPoemsContainer"></div>
-            </div>
-            
-            <!-- Recommended Poems -->
-            <div class="tab-pane fade" id="recommended" role="tabpanel">
-                <div class="row" id="recommendedPoemsContainer"></div>
-            </div>
-            
-            <!-- All Poems -->
-            <div class="tab-pane fade" id="all" role="tabpanel">
-                <div class="row" id="allPoemsContainer"></div>
-            </div>
-        </div>
+        </aside>
 
-        <!-- Works Section -->
-        <section id="works" class="my-5 py-4">
-            <h2 class="text-center mb-4">Осори Балхӣ</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card poem-card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title poem-title">Дивони ашъор</h5>
-                            <p class="card-text">Ҳамаи ғазалу қасидаву рубоиҳои Балхӣ</p>
-                            <a href="#" class="btn btn-primary">Матнҳо</a>
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container-fluid">
+                <!-- Home Section -->
+                <section id="home" class="section active">
+                    <div class="section-header">
+                        <h2>Ашъори маъмул</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-sm btn-outline-primary" id="shufflePoems">
+                                <i class="fas fa-random"></i> Тасодуфӣ
+                            </button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card poem-card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title poem-title">Маснавиҳо</h5>
-                            <p class="card-text">Маснавиҳои манзуми Балхӣ</p>
-                            <a href="#" class="btn btn-primary">Матнҳо</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card poem-card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title poem-title">Рисолаҳо</h5>
-                            <p class="card-text">Рисолаҳои насрии Балхӣ</p>
-                            <a href="#" class="btn btn-primary">Матнҳо</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="my-5 py-4">
-            <h2 class="text-center mb-4">Дар бораи Балхӣ</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Зиндагинома</h4>
-                    <p id="biographyText"></p>
-                </div>
-                <div class="col-md-6">
-                    <h4>Давраи зиндагӣ</h4>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-date">1207</div>
-                            <div class="timeline-content">
-                                <h5>Таваллуд</h5>
-                                <p>Дар шаҳри Балх ба дунё омадааст.</p>
+                    <div class="poems-grid" id="featuredPoems">
+                        <!-- Featured poems will load here -->
+                    </div>
+                </section>
+
+                <!-- Ghazals Section -->
+                <section id="ghazals" class="section">
+                    <div class="section-header">
+                        <h2>Ғазалҳо</h2>
+                        <div class="filter-controls">
+                            <select class="form-select form-select-sm" id="ghazalFilter">
+                                <option value="all">Ҳама</option>
+                                <option value="top">Беҳтаринҳо</option>
+                                <option value="new">Навтаринҳо</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="poems-grid" id="ghazalsContainer">
+                        <!-- Ghazals will load here -->
+                    </div>
+                </section>
+
+                <!-- Rubaiyat Section -->
+                <section id="rubaiyat" class="section">
+                    <div class="section-header">
+                        <h2>Рубоиҳо</h2>
+                        <div class="filter-controls">
+                            <select class="form-select form-select-sm" id="rubaiFilter">
+                                <option value="all">Ҳама</option>
+                                <option value="top">Беҳтаринҳо</option>
+                                <option value="new">Навтаринҳо</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="poems-grid" id="rubaiyatContainer">
+                        <!-- Rubaiyat will load here -->
+                    </div>
+                </section>
+
+                <!-- Qasidas Section -->
+                <section id="qasidas" class="section">
+                    <div class="section-header">
+                        <h2>Қасидаҳо</h2>
+                        <div class="filter-controls">
+                            <select class="form-select form-select-sm" id="qasidaFilter">
+                                <option value="all">Ҳама</option>
+                                <option value="top">Беҳтаринҳо</option>
+                                <option value="new">Навтаринҳо</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="poems-grid" id="qasidasContainer">
+                        <!-- Qasidas will load here -->
+                    </div>
+                </section>
+
+                <!-- Biography Section -->
+                <section id="biography" class="section">
+                    <div class="section-header">
+                        <h2>Зиндагинома</h2>
+                    </div>
+
+                    <div class="biography-content">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="bio-text" id="biographyText">
+                                    <!-- Biography will load here -->
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="bio-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">1207</div>
+                                        <div class="timeline-content">
+                                            <h5>Таваллуд</h5>
+                                            <p>Дар шаҳри Балх ба дунё омадааст.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">1220</div>
+                                        <div class="timeline-content">
+                                            <h5>Ҳиҷрат</h5>
+                                            <p>Баъди ҳуҷуми муғулҳо ба Қуния кӯчиданд.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">1273</div>
+                                        <div class="timeline-content">
+                                            <h5>Вафот</h5>
+                                            <p>Дар Қуния вафот кардааст.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">1220</div>
-                            <div class="timeline-content">
-                                <h5>Ҳиҷрат</h5>
-                                <p>Баъди ҳуҷуми муғулҳо ба хонаводааш ба Қуния кӯчиданд.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">1273</div>
-                            <div class="timeline-content">
-                                <h5>Вафот</h5>
-                                <p>Дар Қуния вафот кардааст.</p>
-                            </div>
-                        </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="section">
+                    <div class="section-header">
+                        <h2>Тамос бо мо</h2>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nameInput" class="form-label">Номи шумо</label>
+                                        <input type="text" class="form-control" id="nameInput" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="emailInput" class="form-label">Почтаи электронӣ</label>
+                                        <input type="email" class="form-control" id="emailInput" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="messageInput" class="form-label">Паёми шумо</label>
+                                <textarea class="form-control" id="messageInput" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Фиристодан</button>
+                        </form>
+                    </div>
+                </section>
             </div>
-        </section>
+        </main>
     </div>
 
     <!-- Poem Modal -->
     <div class="modal fade" id="poemModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="poemModalTitle">Сарлавҳаи шеър</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h3 class="modal-title" id="poemModalTitle"></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Пӯшидан"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="poemModalContent"></div>
-                    <hr>
-                    <div class="poem-actions">
-                        <button class="like-btn" id="likePoemBtn"><i class="far fa-heart"></i> <span id="likeCount">0</span></button>
-                        <button class="share-btn" id="sharePoemBtn"><i class="fas fa-share-alt"></i> Бахшдан</button>
+                    <div class="poem-meta">
+                        <span class="poem-type badge bg-purple" id="poemModalType"></span>
+                        <span class="poem-date" id="poemModalDate"></span>
                     </div>
-                    <div class="comments-section mt-4">
-                        <h6>Шарҳҳо</h6>
-                        <div id="poemComments"></div>
-                        <div class="add-comment mt-3">
-                            <textarea class="form-control" id="commentText" placeholder="Шарҳи худро нависед..."></textarea>
+                    
+                    <div class="poem-content" id="poemModalContent"></div>
+                    
+                    <div class="poem-actions">
+                        <button class="btn btn-action" id="listenPoemBtn">
+                            <i class="fas fa-headphones"></i> Гӯш кардан
+                        </button>
+                        <button class="btn btn-action like-btn" id="likePoemBtn">
+                            <i class="far fa-heart"></i> <span id="likeCount">0</span>
+                        </button>
+                        <button class="btn btn-action" id="sharePoemBtn">
+                            <i class="fas fa-share-alt"></i> Бахшдан
+                        </button>
+                        <button class="btn btn-action" id="copyPoemBtn">
+                            <i class="far fa-copy"></i> Нусха бардорӣ
+                        </button>
+                    </div>
+                    
+                    <div class="poem-stats">
+                        <span><i class="far fa-eye"></i> <span id="viewCount">0</span> дидан</span>
+                        <span><i class="far fa-comment"></i> <span id="commentCount">0</span> шарҳ</span>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <h5>Шарҳҳо</h5>
+                        <div class="comments-list" id="poemComments"></div>
+                        
+                        <div class="add-comment">
+                            <textarea class="form-control" id="commentText" placeholder="Шарҳи худро нависед..." rows="3"></textarea>
                             <button class="btn btn-primary mt-2" id="submitComment">Ирсол</button>
                         </div>
                     </div>
@@ -209,65 +272,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-light py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Тамос бо мо</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Номи шумо" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Почтаи электронӣ" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Паёми шумо" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Фиристодан</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Балхӣ</h5>
-                    <p>Сомонаи расмии осори адабии Балхӣ</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Пайвандҳо</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Асосӣ</a></li>
-                        <li><a href="#" class="text-white">Осор</a></li>
-                        <li><a href="#" class="text-white">Дар бораи Балхӣ</a></li>
-                        <li><a href="#" class="text-white">Тамос</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Ҷамъиятӣ</h5>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4 bg-light">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="mb-0">&copy; 2023 Сомонаи Балхӣ. Ҳамаи ҳуқуқҳо ҳифз шудаанд.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
