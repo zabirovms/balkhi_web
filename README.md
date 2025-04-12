@@ -1,16 +1,18 @@
-# Balkhi Website (Tajik Language)
+# Сомонаи Балхӣ
 
-A fully functional website dedicated to the works of Balkhi in Tajik language.
+Ин лоиҳа барои эҳё ва нигоҳдории осори адабии Балхӣ ба забони тоҷикӣ таҳия шудааст.
 
-## Features
-- Poem browsing and searching
-- Categorized works
-- Biography section
-- Responsive design
+## Хусусиятҳо
 
-## Setup
-1. Clone this repository
-2. Open `index.html` in any browser
+- **Намоиши мукаммал**: Намоиши ашъор бо гурӯҳбандии мухталиф (ғазалҳо, рубоиҳо, қасидаҳо)
+- **Ҷустуҷӯи зуд**: Имкони ҷустуҷӯи ашъор бо сарлавҳа ё матн
+- **Овозхонӣ**: Имкони гӯш кардани ашъор бо овоз
+- **Тавсияҳо**: Намоиши ашъори маъмул ва тавсияшуда
+- **Зиндагинома**: Саҳифаи мукаммал оид ба зиндагиномаи Балхӣ
+- **Вокунишҳо**: Имкони баҳодиҳӣ ва тафсир навиштан
 
-## Data Structure
-Poems data is stored in [assets/data/poems.json] (or directly in index.html)
+## Танзимот
+
+1. Репозиториро клон кунед:
+   ```bash
+   git clone https://github.com/username/balkhi-website.git
